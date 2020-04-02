@@ -37,7 +37,7 @@ def ask(text):
 def start(timezone):
     run('apt upgrade && apt upgrade')
     run('cd /etc/ssh/ && dpkg-reconfigure openssh-server')
-    run('sudo -i && touch /etc/apt/sources.list && chmod 644 /etc/apt/sources.list && echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list && apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6')
+    run('touch /etc/apt/sources.list && chmod 644 /etc/apt/sources.list && echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list && apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6')
     run('apt-get update')
     run('sudo apt-get install pip')
     run('sudo apt-get install bdist_wheel')
@@ -81,4 +81,5 @@ confirm = ask('Are you ready to proceed? [y/n]: ')
 if confirm: start(timezone)
 else: exit()
 
+input('Press enter to reboot: ')
 run('reboot')
