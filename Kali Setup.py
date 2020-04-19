@@ -71,9 +71,8 @@ def start(timezone):
     run('apt-get install libnl-3-dev libnl-genl-3-dev')
     run('git clone https://github.com/wifiphisher/wifiphisher.git')
     run('cd wifiphisher/ && sudo python setup.py install')
-    run('git clone https://github.com/TechnicalMujeeb/Termux-Lazyscript.git')
-    run('cd Termux-Lazyscript && chmod +x *')
-    run('cd Termux-Lazyscript && sh setup.sh')
+    run('git clone https://github.com/arismelachroinos/lscript.git')
+    run('cd lscript && chmod +x install.sh && ./install.sh')
 
 if not getShell('echo $USER') == 'root':
     print('Please run as root user')
