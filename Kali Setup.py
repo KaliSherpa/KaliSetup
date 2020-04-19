@@ -39,7 +39,7 @@ def start(timezone):
     run('cd /etc/ssh/ && dpkg-reconfigure openssh-server')
     run('touch /etc/apt/sources.list && chmod 644 /etc/apt/sources.list && echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list && apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6')
     run('apt-get update')
-    run('sudo apt-get install pip')
+    run('sudo apt-get install python-pip')
     run('sudo apt-get install bdist_wheel')
     run('apt -y install kali-linux-default')
     run('sudo apt-get install leafpad')
@@ -68,6 +68,12 @@ def start(timezone):
     run('timedatectl set-ntp true')
     run('sudo apt-get install golang')
     run('sudo apt-get install bluetooth bluez blueman')
+    run('apt-get install libnl-3-dev libnl-genl-3-dev')
+    run('git clone https://github.com/wifiphisher/wifiphisher.git')
+    run('cd wifiphisher/ && sudo python setup.py install')
+    run('git clone https://github.com/TechnicalMujeeb/Termux-Lazyscript.git')
+    run('cd Termux-Lazyscript && chmod +x *')
+    run('cd Termux-Lazyscript && sh setup.sh')
 
 if not getShell('echo $USER') == 'root':
     print('Please run as root user')
