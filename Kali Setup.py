@@ -73,6 +73,10 @@ def start(timezone):
     run('cd wifiphisher/ && sudo python setup.py install')
     run('git clone https://github.com/arismelachroinos/lscript.git')
     run('cd lscript && chmod +x install.sh && ./install.sh')
+    run('sudo sysctl -w net.ipv6.conf.eth0.disable_ipv6=0')
+    run('sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=0')
+    run('apt-get install gpsd')
+    run('apt-get install gpsd-clients')
 
 if not getShell('echo $USER') == 'root':
     print('Please run as root user')
